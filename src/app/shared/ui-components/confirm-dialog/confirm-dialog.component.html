@@ -1,0 +1,31 @@
+<div *ngIf="message" class="modal" tabindex="-1" role="dialog" style="display:block!important">
+	<div class="modal-dialog custom-alert" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">
+					{{ (message.fieldLabels.type == 'alert' ? 'Alert' : 'Confirm') }}
+				</h4>
+				<button type="button" *ngIf="message.fieldLabels.closeable" class="close" (click)="message.close()">&times;</button>
+			</div>
+			<div class="modal-body">
+				<p>{{ message.fieldLabels.message }}</p>
+				<table style="width: 100%;">
+					<tr *ngFor="let eachCustomMessage of message.customMessage">
+						<td style="text-align: center; width: 50%;">
+							{{ eachCustomMessage.key }}
+						</td>
+						<td *ngIf="![null, '', undefined].includes(eachCustomMessage.value)">
+							<b>{{ eachCustomMessage.value }}</b>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-primary"
+					(click)="message.yesFn()">{{ message.fieldLabels.yesBtn }}</button>
+				<button type="button" class="btn btn-default"
+					(click)="message.noFn()">{{ message.fieldLabels.noBtn }}</button>
+			</div>
+		</div>
+	</div>
+</div>

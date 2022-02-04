@@ -1,0 +1,50 @@
+<div class="card">
+    <div class="card-header justify-content-between">
+      <h3>Edit Item</h3>
+      <span>
+        <button class="btn btn-sm btn-dark" [routerLink]="['/admin/items']">All Items</button>
+      </span>
+    </div>
+    <div class="card-body">
+        <form [formGroup]="formAddItem">
+            <div class="row">
+                <div class="col-8">
+                    <div class="row">
+                        <div class="col-8">
+                            <label class="input-label">Name</label>
+                            <input type="text" class="form-control" formControlName="name" id="name" [ngClass]="{'has-error': hasError('name')}">
+                        </div>
+                        <div class="col-4">
+                            <label class="input-label">Price</label>
+                            <input type="number" class="form-control" formControlName="rg_price" [ngClass]="{'has-error': hasError('rg_price')}">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-8">
+                            <label class="input-label">Manufacturer</label>
+                            <input type="text" class="form-control" formControlName="manufacturer" [ngClass]="{'has-error': hasError('manufacturer')}">
+                        </div>
+                        <div class="col-4">
+                            <label class="input-label">Quantity in stock</label>
+                            <input type="number" class="form-control" formControlName="stk_qty" [ngClass]="{'has-error': hasError('stk_qty')}">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="row">
+                        <div class="col">
+                            <label class="input-label">Desc</label>
+                            <textarea class="form-control" formControlName="desc" [ngClass]="{'has-error': hasError('desc')}"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col"></div>
+                <div class="col-2 text-align-center">
+                    <button class="btn btn-warning btn-sm" (click)="updateItem()">Update</button>
+                </div>
+            </div>
+        </form>
+    </div>
+  </div>

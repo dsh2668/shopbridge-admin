@@ -1,0 +1,6 @@
+{
+    "env": {
+        "name": "prod"
+    },
+    "baseURL": "https://my-json-server.typicode.com/dsh2668"
+}

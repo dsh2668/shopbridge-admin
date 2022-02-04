@@ -1,1 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
+.justify-content-between {
+    display: flex;
+    justify-content: space-between;
+}
+
+.mr-05rem {
+    margin-right: 0.5rem !important;
+}
+
+.text-align-center {
+    text-align: center !important;
+}
+
+.has-error {
+    border: 1px solid red;
+    background-color: rgb(255, 198, 198);
+}
+
+.material-icons {
+    cursor: pointer !important;
+}
+
+.admin-hdr {
+    padding-bottom: 0;
+    background: slategray;
+}

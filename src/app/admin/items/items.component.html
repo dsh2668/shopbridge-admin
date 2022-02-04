@@ -1,0 +1,83 @@
+<div class="card">
+  <div class="card-header justify-content-between">
+    <h3>Items</h3>
+    <span>
+      <select class="mr-05rem" [(ngModel)]="itemsPerPage">
+        <option value="" disabled>Select No of Rows</option>
+        <option value="5">5</option>
+        <option value="10">10</option>
+      </select>
+      <input type="search" class="mr-05rem" placeholder="Search Item" [(ngModel)]="searchString">
+      <button class="btn btn-sm btn-success" [routerLink]="['/admin/add-item']">Add Item</button>
+    </span>
+  </div>
+  <div class="card-body">
+    <table class="table table-hover table-striped table-bordered">
+      <thead>
+        <tr>
+          <th (click)="itemSortBy='id';itemSortAscending=!itemSortAscending" style="width: 10%;">
+            ID
+            <span *ngIf="itemSortBy==='id'">
+              <span class="material-icons" *ngIf="!itemSortAscending">
+                arrow_downward
+              </span>
+              <span class="material-icons" *ngIf="itemSortAscending">
+                arrow_upward
+              </span>
+            </span>
+          </th>
+          <th (click)="itemSortBy='name';itemSortAscending=!itemSortAscending" style="width: 35%;">Name
+            <span *ngIf="itemSortBy==='name'">
+              <span class="material-icons" *ngIf="!itemSortAscending">
+                arrow_downward
+              </span>
+              <span class="material-icons" *ngIf="itemSortAscending">
+                arrow_upward
+              </span>
+            </span>
+          </th>
+          <th (click)="itemSortBy='desc';itemSortAscending=!itemSortAscending" style="width: 45%;">Desc
+            <span *ngIf="itemSortBy==='desc'">
+              <span class="material-icons" *ngIf="!itemSortAscending">
+                arrow_downward
+              </span>
+              <span class="material-icons" *ngIf="itemSortAscending">
+                arrow_upward
+              </span>
+            </span>
+          </th>
+          <th style="width: 10%;">
+            Action
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let eachItem of ((items | sortList: itemSortBy: itemSortAscending) | searchValue: searchBasedOn : searchString) | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }">
+          <td>{{ eachItem.id }}</td>
+          <td>{{ eachItem.name }}</td>
+          <td>{{ eachItem.desc }}</td>
+          <td>
+            <span class="material-icons mr-05rem" [routerLink]="['/admin/edit-item', eachItem.id]">
+              edit
+            </span>
+            <span class="material-icons text-danger" (click)="onDelete(eachItem)">
+              delete
+            </span>
+          </td>
+        </tr>
+      </tbody>
+      <tbody *ngIf="((items | sortList: itemSortBy: itemSortAscending) | searchValue: searchBasedOn : searchString).length === 0">
+        <tr>
+          <td colspan="4" class="text-align-center">No records found!</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="4" class="text-align-center">
+            <pagination-controls (pageChange)="currentPage = $event"></pagination-controls>
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+</div>
