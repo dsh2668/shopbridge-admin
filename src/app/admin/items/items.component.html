@@ -82,7 +82,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let eachItem of ((items | sortList: itemSortBy: itemSortAscending) | searchValue: searchBasedOn : searchString) | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }">
+        <tr *ngFor="let eachItem of ((items | searchValue: searchBasedOn : searchString) | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage } | sortList: itemSortBy: itemSortAscending)">
           <td>{{ eachItem.id }}</td>
           <td>{{ eachItem.name }}</td>
           <td>{{ eachItem.desc }}</td>
@@ -99,7 +99,7 @@
           </td>
         </tr>
       </tbody>
-      <tbody *ngIf="((items | sortList: itemSortBy: itemSortAscending) | searchValue: searchBasedOn : searchString).length === 0">
+      <tbody *ngIf="((items | searchValue: searchBasedOn : searchString) | sortList: itemSortBy: itemSortAscending).length === 0">
         <tr>
           <td colspan="7" class="text-align-center">No records found!</td>
         </tr>
