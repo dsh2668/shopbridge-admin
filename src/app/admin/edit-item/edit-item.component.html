@@ -13,20 +13,24 @@
                         <div class="col-8">
                             <label class="input-label">Name</label>
                             <input type="text" class="form-control" formControlName="name" id="name" [ngClass]="{'has-error': hasError('name')}">
+                            <span class="text-danger error-span" *ngIf="hasError('name')">Name is required and should be more than 1 character</span>
                         </div>
                         <div class="col-4">
                             <label class="input-label">Price</label>
                             <input type="number" class="form-control" formControlName="rg_price" [ngClass]="{'has-error': hasError('rg_price')}">
+                            <span class="text-danger error-span" *ngIf="hasError('rg_price')">Price is required</span>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-8">
                             <label class="input-label">Manufacturer</label>
                             <input type="text" class="form-control" formControlName="manufacturer" [ngClass]="{'has-error': hasError('manufacturer')}">
+                            <span class="text-danger error-span" *ngIf="hasError('manufacturer')">Manufacturer is required and should be more than 1 character</span>
                         </div>
                         <div class="col-4">
                             <label class="input-label">Quantity in stock</label>
                             <input type="number" class="form-control" formControlName="stk_qty" [ngClass]="{'has-error': hasError('stk_qty')}">
+                            <span class="text-danger error-span" *ngIf="hasError('stk_qty')">Quantity is required</span>
                         </div>
                     </div>
                 </div>
@@ -40,7 +44,19 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col"></div>
+                <div class="col-3 auto-margin-top">
+                    <span>
+                        <label class="input-label mr-05rem">On Sale?</label>
+                        <input type="checkbox" formControlName="is_sale_active"
+                            [ngClass]="{'has-error': hasError('is_sale_active')}">
+                    </span>
+                </div>
+                <div class="col-5">
+                    <label class="input-label">Sale Discount</label>
+                    <mat-slider class="form-control" [disabled]="!formAddItem.get('is_sale_active').value" [max]="100" [min]="0" [step]="1"
+                        [thumbLabel]="true" formControlName="sale_discount">
+                    </mat-slider>
+                </div>
                 <div class="col-2 text-align-center">
                     <button class="btn btn-warning btn-sm" (click)="updateItem()">Update</button>
                 </div>

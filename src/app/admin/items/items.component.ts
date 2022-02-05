@@ -18,7 +18,7 @@ export class ItemsComponent implements OnInit {
   itemsPerPage = 5;
   currentPage = 1;
 
-  searchBasedOn = 'id,name,desc';
+  searchBasedOn = 'id,name,desc,sale_discount,rg_price,stk_qty';
 
   constructor(
     private itemService: ItemService,

@@ -19,7 +19,9 @@ export class EditItemComponent implements OnInit, AfterViewInit {
     desc: new FormControl(null),
     rg_price: new FormControl(0, [Validators.required, Validators.min(0)]),
     manufacturer: new FormControl(null, [Validators.required, Validators.minLength(2)]),
-    stk_qty: new FormControl(0, [Validators.required, Validators.min(0)])
+    stk_qty: new FormControl(0, [Validators.required, Validators.min(0)]),
+    is_sale_active: new FormControl(false),
+    sale_discount: new FormControl(0),
   });
 
   constructor(

@@ -6,6 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BlockUIHttpModule } from 'ng-block-ui/http';
 import { BlockUIModule } from 'ng-block-ui';
+import {MatSliderModule} from '@angular/material/slider';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -50,7 +51,8 @@ export function initializeApp(appConfig: AppConfig): any {
     MatSnackBarModule,
     MatIconModule,
     BlockUIHttpModule.forRoot(),
-    BlockUIModule.forRoot()
+    BlockUIModule.forRoot(),
+    MatSliderModule
   ],
   providers: [
     {
